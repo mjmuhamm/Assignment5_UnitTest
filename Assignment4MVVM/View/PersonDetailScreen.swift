@@ -15,11 +15,17 @@ struct PersonDetailScreen: View {
             HStack(alignment: .top) {
                 AsyncImage(url: URL(string: person.avatar)) { image in
                     image
-                        .image?.resizable()
+                        .resizable()
                         .scaledToFit()
                         .cornerRadius(8)
                         .frame(width: 100, height: 100)
-                }
+                } placeholder: {
+                    Image(systemName: "person.crop.circle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100, height: 100)
+                        .foregroundColor(.gray)
+            }
                 
                 VStack(alignment: .leading) {
                     Text(person.firstName)
